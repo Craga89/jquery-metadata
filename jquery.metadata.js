@@ -1,7 +1,7 @@
 /*
  * Metadata - jQuery plugin for parsing metadata from elements
  *
- * Copyright (c) 2006 John Resig, Yehuda Katz, J�örn Zaefferer, Paul McLanahan
+ * Copyright (c) 2006 John Resig, Yehuda Katz, Joern Zaefferer, Paul McLanahan
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -61,7 +61,7 @@
  * @see metadata()
  */
 
-(function($, window, undefined) {
+(function($, window) {
 
 	$.extend({
 		metadata : {
@@ -90,16 +90,6 @@
 
 				data = '{}';
 
-				function getData(data) {
-					if('string' !== typeof data) {
-						return data;
-					}
-
-					if(data.indexOf('{') < 0) {
-						data = eval('(' + data + ')');
-					}
-				}
-				
 				function getObject(data) {
 					if('string' === typeof data) {
 						data = eval('(' + data + ')');
@@ -114,7 +104,7 @@
 						
 						if(name.match(/^data-/)) {
 							name = name.replace(/^data-/, '');
-							object[name] = getObject( this.nodeValue );
+							object[name] = this.nodeValue;
 						}
 					});
 				} 
